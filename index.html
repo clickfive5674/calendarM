@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>行事曆</title>
+<title>毛事曆</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
@@ -836,12 +836,12 @@ body.editing .fab-edit{ background: var(--sage); }
     </div>
     <div class="home-greeting">
       <div class="date" id="home-date">2026年9月1日 · 星期二</div>
-      <div class="hello">午安🐨</div>
+      <div class="hello">你好，🐨</div>
     </div>
 
     <div class="home-card">
-      <div class="card-title">每日一句</div>
-      <div class="note-preview" id="home-quote-preview">慢慢來,比較快。</div>
+      <div class="card-title">今日籤詩</div>
+      <div class="note-preview" id="home-quote-preview">吸氣，我知道我在吸氣；吐氣，我知道我在吐氣。</div>
     </div>
 
     <div class="home-card">
@@ -1204,7 +1204,7 @@ async function renderHome(){
 
   try{ await ensureListsLoaded(); }catch(err){ showToast('讀取首頁資料失敗:' + err.message); }
   document.getElementById('home-quote-preview').textContent =
-    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定每日一句)';
+    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定今日籤詩)';
 
   const monday = new Date(d); monday.setDate(d.getDate() - ((d.getDay()+6)%7));
   const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
