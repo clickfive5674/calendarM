@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>毛事曆</title>
+<title>行事曆</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
@@ -102,7 +102,6 @@ body{
 }
 .view.active{ display:block; }
 
-
 /* ===== HOME ===== */
 .home-greeting{
   padding: 8px 0 20px;
@@ -118,7 +117,7 @@ body{
   font-weight:700;
   line-height:1.4;
 }
- 
+
 .home-hero{
   margin: 0 -20px 18px;
   height: 190px;
@@ -147,7 +146,7 @@ body{
   color:#fff;
   text-shadow: 0 2px 10px rgba(0,0,0,.28);
 }
- 
+
 .home-card{
   background: var(--paper-raised);
   border: 1px solid var(--line);
@@ -167,7 +166,7 @@ body{
   white-space:pre-wrap;
 }
 .home-card .note-preview.empty{ color:var(--ink-soft); font-style: normal; }
- 
+
 .progress-row{
   display:flex;
   align-items:center;
@@ -197,7 +196,7 @@ body{
 }
 .progress-text{ font-size:14px; color:var(--ink); }
 .progress-text b{ font-weight:700; }
- 
+
 .week-strip{
   display:flex;
   gap:6px;
@@ -217,7 +216,7 @@ body{
 }
 .week-strip .dot.has-task{ background:var(--indigo); }
 .week-strip .dot.all-done{ background:var(--sage); }
- 
+
 .quiet-line{
   text-align:center;
   font-family:'LXGW WenKai TC', serif;
@@ -226,7 +225,7 @@ body{
   margin: 28px 0 10px;
   line-height:1.8;
 }
- 
+
 .link-cat{
   font-size:12px;
   color:var(--ink-soft);
@@ -263,7 +262,7 @@ body{
 .pill-icon.folder{ background:var(--sage); }
 .pill-icon.sheet{ background:#3F7D4F; }
 .pill-icon.slides{ background:var(--clay); }
- 
+
 .reminder-list{
   margin:0;
   padding-left:18px;
@@ -274,7 +273,7 @@ body{
   margin-bottom:4px;
 }
 .reminder-list li::marker{ color:var(--ink-soft); }
- 
+
 .timeline{ padding-left:2px; }
 .tl-month{
   display:flex;
@@ -304,7 +303,6 @@ body{
   line-height:1.75;
   color:var(--ink);
 }
- 
 
 /* ---------- Inline editing ---------- */
 .editable-text{ outline:none; border-radius:4px; }
@@ -865,14 +863,16 @@ body.editing .fab-edit{ background: var(--sage); }
     <div class="topbar" style="padding-bottom:0;">
       <div class="label-group"><span class="label hanzi">首頁</span></div>
     </div>
-    <div class="home-greeting">
-      <div class="date" id="home-date">2026年9月1日 · 星期二</div>
-      <div class="hello">你好，🐨</div>
+    <div class="home-hero">
+      <div class="home-hero-overlay">
+        <div class="date" id="home-date">2026年9月1日 · 星期二</div>
+        <div class="hello">午安🐨</div>
+      </div>
     </div>
 
     <div class="home-card">
-      <div class="card-title">今日籤詩</div>
-      <div class="note-preview" id="home-quote-preview">吸氣，我知道我在吸氣；吐氣，我知道我在吐氣。</div>
+      <div class="card-title">每日一句</div>
+      <div class="note-preview" id="home-quote-preview">慢慢來,比較快。</div>
     </div>
 
     <div class="home-card">
@@ -1235,7 +1235,7 @@ async function renderHome(){
 
   try{ await ensureListsLoaded(); }catch(err){ showToast('讀取首頁資料失敗:' + err.message); }
   document.getElementById('home-quote-preview').textContent =
-    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定今日籤詩)';
+    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定每日一句)';
 
   const monday = new Date(d); monday.setDate(d.getDate() - ((d.getDay()+6)%7));
   const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
