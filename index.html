@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>行事曆</title>
+<title>毛事曆</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
@@ -866,13 +866,13 @@ body.editing .fab-edit{ background: var(--sage); }
     <div class="home-hero">
       <div class="home-hero-overlay">
         <div class="date" id="home-date">2026年9月1日 · 星期二</div>
-        <div class="hello">午安🐨</div>
+        <div class="hello">泥好，🐨</div>
       </div>
     </div>
 
     <div class="home-card">
-      <div class="card-title">每日一句</div>
-      <div class="note-preview" id="home-quote-preview">慢慢來,比較快。</div>
+      <div class="card-title">今日籤詩</div>
+      <div class="note-preview" id="home-quote-preview">今は今、今度は今度</div>
     </div>
 
     <div class="home-card">
@@ -1130,7 +1130,7 @@ async function ensureRangeLoaded(startDate, endDate){
   });
 }
 
-/* ============ 首頁清單快取(常用連結/協作提醒/年度時程/每日一句) ============ */
+/* ============ 首頁清單快取(常用連結/協作提醒/年度時程/今日籤詩) ============ */
 let quotesData = [];
 let linksData = [];
 let remindersData = [];
@@ -1235,7 +1235,7 @@ async function renderHome(){
 
   try{ await ensureListsLoaded(); }catch(err){ showToast('讀取首頁資料失敗:' + err.message); }
   document.getElementById('home-quote-preview').textContent =
-    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定每日一句)';
+    quotesData.length ? quotesData[dayOfYear(d) % quotesData.length].text : '(尚未設定每日籤詩)';
 
   const monday = new Date(d); monday.setDate(d.getDate() - ((d.getDay()+6)%7));
   const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
