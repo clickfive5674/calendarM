@@ -553,6 +553,7 @@ body.editing .fab-edit{ background: var(--sage); }
 .month-cell .dotwrap span{ width:5px; height:5px; border-radius:50%; background:var(--indigo); }
 .month-cell.is-today .dotwrap span{ background: rgba(255,255,255,.85); }
 .month-cell .dotwrap span.sage{ background:var(--sage); }
+.month-cell .dotwrap span.clay{ background:var(--clay); }
 .month-cell:active{ background: var(--indigo-soft); }
 .month-cell.is-today:active{ background: var(--indigo); }
 
@@ -1471,9 +1472,11 @@ async function renderMonth(){
     let cls = 'month-cell';
     if(isToday) cls += ' is-today';
     if(day.status) cls += ' is-status';
-    let dots = '';
-    if(total>0 && done===total) dots = `<span class="dotwrap"><span class="sage"></span></span>`;
-    else if(total>0) dots = `<span class="dotwrap"><span></span></span>`;
+    let dotParts = [];
+    if(day.status) dotParts.push('<span class="clay"></span>');
+    if(total>0 && done===total) dotParts.push('<span class="sage"></span>');
+    else if(total>0) dotParts.push('<span></span>');
+    let dots = dotParts.length ? `<span class="dotwrap">${dotParts.join('')}</span>` : '';
     const cell = document.createElement('div');
     cell.className = cls;
     cell.dataset.date = dkey(d);
